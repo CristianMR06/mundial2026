@@ -1879,6 +1879,9 @@
 
       setInterval(() => { tick(); tickCd(); }, 1000);
       setInterval(() => { buildHoy(); updateLive(); buildTicker(); }, 60000);
+      setInterval(() => {                          /* API cada 2 minutos */
+        fetchScores().then(() => { buildHoy(); buildTicker(); if (cur === 1) renderCalPage(); });
+      }, 120000);
 
       /* arrancar rotación automática — sin necesidad de tocar la pantalla */
       startProg(ROT[0]);
