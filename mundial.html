@@ -1459,8 +1459,8 @@
        1. Regístrate gratis en https://www.football-data.org/client/register
        2. Copia tu token en API_KEY
     ══════════════════════════════════════════════════════════ */
-    const API_KEY  = '3cd7fc56d99c4a3595ff27186605a65c';
-    const API_BASE = 'https://api.football-data.org/v4';
+    /* ── Cambia WORKER_URL por la URL que te dé Cloudflare tras desplegar worker.js ── */
+    const WORKER_URL = 'https://REEMPLAZA-ESTO.workers.dev';
     let   LIVE_DATA = {};  // { id_local: { h, a, status, min } }
     let   UTC_TO_ID = {};  // utcMin → id_local
 
@@ -1822,11 +1822,9 @@
     }
 
     async function fetchScores() {
-      if (!API_KEY) return;
+      if (!WORKER_URL || WORKER_URL.includes('REEMPLAZA')) return;
       try {
-        const r = await fetch(`${API_BASE}/competitions/WC/matches`, {
-          headers: { 'X-Auth-Token': API_KEY }
-        });
+        const r = await fetch(WORKER_URL);   /* el worker añade la API key y CORS */
         if (!r.ok) { showApiStatus(false, `API ${r.status}`); return; }
         const d = await r.json();
 
