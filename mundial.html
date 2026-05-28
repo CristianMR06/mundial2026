@@ -1250,7 +1250,7 @@
 
 
       <div class="hdr-title">FIFA WORLD CUP 2026™</div>
-      <div class="hdr-sub">11 Junio – 19 Julio · Canadá · México · USA · 104 Partidos · 48 Selecciones</div>
+      <div class="hdr-sub" data-i18n="hdrSub">11 Jun – 19 Jul · Canadá · México · USA · 104 Partidos · 48 Selecciones</div>
     </div>
 
     <div class="hdr-sep"></div>
@@ -1258,15 +1258,15 @@
     <div class="hdr-hosts">
       <div class="chip">
         <img src="https://flagcdn.com/w80/ca.png" alt="Canadá">
-        <span>Canadá</span>
+        <span data-i18n="ca">Canadá</span>
       </div>
       <div class="chip">
         <img src="https://flagcdn.com/w80/mx.png" alt="México">
-        <span>México</span>
+        <span data-i18n="mx">México</span>
       </div>
       <div class="chip">
         <img src="https://flagcdn.com/w80/us.png" alt="USA">
-        <span>USA</span>
+        <span data-i18n="us">USA</span>
       </div>
     </div>
   </header>
@@ -1274,13 +1274,13 @@
   <!-- ══════════ TABS ══════════ -->
   <nav class="tabs">
     <button class="tab on" id="tab0" onclick="goPanel(0)">
-      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Hoy
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span data-i18n="tabHoy"> Hoy</span>
     </button>
     <button class="tab" id="tab1" onclick="goPanel(1)">
-      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> Calendario
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span data-i18n="tabCal"> Calendario</span>
     </button>
     <button class="tab" id="tab2" onclick="goPanel(2)">
-      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></span> Grupos
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></span><span data-i18n="tabGrp"> Grupos</span>
     </button>
     <div class="tab-stretch"></div>
     <div class="live-pill">
@@ -1296,7 +1296,7 @@
   <main class="content">
     <section class="panel on" id="p0"></section>
     <section class="panel" id="p1">
-      <div class="slabel">Próximos Partidos · Hora España (CEST)</div>
+      <div class="slabel" data-i18n="lblCal">Próximos Partidos · Hora España (CEST)</div>
       <div class="cal-cols" id="cal-cols"></div>
       <div class="cal-promo">
         <div class="cal-promo-ico">📅⚽</div>
@@ -1308,7 +1308,7 @@
       </div>
     </section>
     <section class="panel" id="p2">
-      <div class="slabel">12 Grupos · 48 Selecciones · Fase de Grupos</div>
+      <div class="slabel" data-i18n="lblGrp">12 Grupos · 48 Selecciones · Fase de Grupos</div>
       <div class="groups" id="groups"></div>
     </section>
   </main>
@@ -1387,6 +1387,72 @@
       L: ["Inglaterra", "Croacia", "Ghana", "Panamá"]
     };
     const SN = { GS: "Fase de Grupos", R32: "Ronda de 32", R16: "Octavos", QF: "Cuartos", SF: "Semis", "3P": "3er Puesto", FIN: "FINAL" };
+
+    /* ══════════════════════════════════════════
+       INTERNACIONALIZACIÓN · ES / EN / DE / FR
+    ══════════════════════════════════════════ */
+    const LANG_CYCLE = ['es','en','de','fr'];
+    let langIdx = 0, curLang = 'es';
+    const I18N = {
+      es:{ hdrSub:"11 Jun – 19 Jul · Canadá · México · USA · 104 Partidos · 48 Selecciones",
+           tabHoy:" Hoy", tabCal:" Calendario", tabGrp:" Grupos",
+           lblCal:"Próximos Partidos · Hora España (CEST)",
+           lblGrp:"12 Grupos · 48 Selecciones · Fase de Grupos", lblHoy:"Partidos de Hoy",
+           GS:"Fase de Grupos",R32:"Ronda de 32",R16:"Octavos",QF:"Cuartos",SF:"Semis","3P":"3er Puesto",FIN:"FINAL",
+           live:"EN VIVO", soon:"En breve", done:"Finalizado",
+           cdEye:"FIFA World Cup 2026 · Cuenta Atrás",
+           cdHead:"El torneo arranca el", cdDate:"Jueves 11 de Junio, 2026",
+           cdDays:"Días", cdHours:"Horas", cdMins:"Minutos", cdSecs:"Segundos",
+           cdFirst:"Primeros partidos · Grupo A · 11 Junio",
+           noMatch:"Sin partidos hoy", next:"Próximo",
+           days:['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+           months:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago'],
+           today:"HOY", grupo:"Grupo", ca:"Canadá", mx:"México", us:"USA", locale:"es-ES" },
+      en:{ hdrSub:"Jun 11 – Jul 19 · Canada · Mexico · USA · 104 Matches · 48 Teams",
+           tabHoy:" Today", tabCal:" Schedule", tabGrp:" Groups",
+           lblCal:"Upcoming Matches · Spain Time (CEST)",
+           lblGrp:"12 Groups · 48 Teams · Group Stage", lblHoy:"Today's Matches",
+           GS:"Group Stage",R32:"Round of 32",R16:"Round of 16",QF:"Quarterfinals",SF:"Semifinals","3P":"3rd Place",FIN:"FINAL",
+           live:"LIVE", soon:"Soon", done:"Finished",
+           cdEye:"FIFA World Cup 2026 · Countdown",
+           cdHead:"The tournament starts on", cdDate:"Thursday, June 11, 2026",
+           cdDays:"Days", cdHours:"Hours", cdMins:"Minutes", cdSecs:"Seconds",
+           cdFirst:"First matches · Group A · June 11",
+           noMatch:"No matches today", next:"Next",
+           days:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+           months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
+           today:"TODAY", grupo:"Group", ca:"Canada", mx:"Mexico", us:"USA", locale:"en-US" },
+      de:{ hdrSub:"11. Jun – 19. Jul · Kanada · Mexiko · USA · 104 Spiele · 48 Teams",
+           tabHoy:" Heute", tabCal:" Spielplan", tabGrp:" Gruppen",
+           lblCal:"Kommende Spiele · Spanische Zeit (MESZ)",
+           lblGrp:"12 Gruppen · 48 Teams · Gruppenphase", lblHoy:"Heutige Spiele",
+           GS:"Gruppenphase",R32:"Runde der 32",R16:"Achtelfinale",QF:"Viertelfinale",SF:"Halbfinale","3P":"Platz 3",FIN:"FINALE",
+           live:"LIVE", soon:"Bald", done:"Beendet",
+           cdEye:"FIFA World Cup 2026 · Countdown",
+           cdHead:"Das Turnier beginnt am", cdDate:"Donnerstag, 11. Juni 2026",
+           cdDays:"Tage", cdHours:"Stunden", cdMins:"Minuten", cdSecs:"Sekunden",
+           cdFirst:"Erste Spiele · Gruppe A · 11. Juni",
+           noMatch:"Heute keine Spiele", next:"Nächstes",
+           days:['So','Mo','Di','Mi','Do','Fr','Sa'],
+           months:['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug'],
+           today:"HEUTE", grupo:"Gruppe", ca:"Kanada", mx:"Mexiko", us:"USA", locale:"de-DE" },
+      fr:{ hdrSub:"11 Jun – 19 Jul · Canada · Mexique · USA · 104 Matchs · 48 Équipes",
+           tabHoy:" Aujourd'hui", tabCal:" Calendrier", tabGrp:" Groupes",
+           lblCal:"Prochains matchs · Heure Espagne (CEST)",
+           lblGrp:"12 Groupes · 48 Équipes · Phase de groupes", lblHoy:"Matchs du jour",
+           GS:"Phase de groupes",R32:"Tour de 32",R16:"Huitièmes",QF:"Quarts",SF:"Demi-finales","3P":"3e place",FIN:"FINALE",
+           live:"EN DIRECT", soon:"Bientôt", done:"Terminé",
+           cdEye:"FIFA World Cup 2026 · Compte à rebours",
+           cdHead:"Le tournoi commence le", cdDate:"Jeudi 11 juin 2026",
+           cdDays:"Jours", cdHours:"Heures", cdMins:"Minutes", cdSecs:"Secondes",
+           cdFirst:"Premiers matchs · Groupe A · 11 juin",
+           noMatch:"Aucun match aujourd'hui", next:"Prochain",
+           days:['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+           months:['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû'],
+           today:"AUJOURD'HUI", grupo:"Groupe", ca:"Canada", mx:"Mexique", us:"USA", locale:"fr-FR" }
+    };
+    function t(k){ return I18N[curLang]?.[k] ?? I18N.es[k] ?? k; }
+    function stageName(s){ return t(s) || SN[s] || s; }
 
     /* ══════════════════════════════════════════════════════════
        API FOOTBALL-DATA.ORG  —  Scores en tiempo real
@@ -1542,18 +1608,18 @@
       </div>`;
         }).join('');
         p.innerHTML = `<div class="cd-wrap">
-      <div class="cd-eyebrow">FIFA World Cup 2026 · Cuenta Atrás</div>
-      <div class="cd-head">El torneo arranca el <em>Jueves 11 de Junio, 2026</em></div>
+      <div class="cd-eyebrow">${t('cdEye')}</div>
+      <div class="cd-head">${t('cdHead')} <em>${t('cdDate')}</em></div>
       <div class="cd-timer">
-        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-d">${String(dd).padStart(2, '0')}</div></div><div class="cd-lbl">Días</div></div>
+        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-d">${String(dd).padStart(2, '0')}</div></div><div class="cd-lbl">${t('cdDays')}</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-h">${String(hh).padStart(2, '0')}</div></div><div class="cd-lbl">Horas</div></div>
+        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-h">${String(hh).padStart(2, '0')}</div></div><div class="cd-lbl">${t('cdHours')}</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-m">${String(mm).padStart(2, '0')}</div></div><div class="cd-lbl">Minutos</div></div>
+        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-m">${String(mm).padStart(2, '0')}</div></div><div class="cd-lbl">${t('cdMins')}</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-s">${String(ss).padStart(2, '0')}</div></div><div class="cd-lbl">Segundos</div></div>
+        <div class="cd-unit"><div class="cd-card"><div class="cd-n" id="cd-s">${String(ss).padStart(2, '0')}</div></div><div class="cd-lbl">${t('cdSecs')}</div></div>
       </div>
-      <div class="cd-prev-lbl">Primeros partidos · Grupo A · 11 Junio</div>
+      <div class="cd-prev-lbl">${t('cdFirst')}</div>
       <div class="cd-prev-row">${pills}</div>
     </div>`;
       } else if (todayM.length > 0) {
@@ -1561,7 +1627,7 @@
         const cls = n <= 1 ? 'cols1' : n <= 2 ? 'cols2' : n <= 3 ? 'cols3' : n <= 4 ? 'cols4' : 'cols8';
         const cards = todayM.map(m => {
           const sd = toSpain(m.date, m.t, m.u), st = status(m);
-          const stage = m.g ? `Grupo ${m.g}` : SN[m.s];
+          const stage = m.g ? `${t('grupo')} ${m.g}` : stageName(m.s);
           const ld = LIVE_DATA[m.id];
           const midHtml = (ld && ld.h != null)
             ? `<div class="mc-score">
@@ -1569,10 +1635,10 @@
                 ${(ld.apiSt === 'IN_PLAY' || ld.apiSt === 'PAUSED') ? `<div class="mc-sc-min">${ld.min ?? '?'}′</div>` : ''}
                </div>`
             : `<div class="mc-vs">VS</div>`;
-          const bdg = st === 'live' ? `<span class="badge b-live"><span class="b-live-dot"></span>EN VIVO</span>` :
-            st === 'soon' ? `<span class="badge b-soon">⏰ En breve</span>` :
+          const bdg = st === 'live' ? `<span class="badge b-live"><span class="b-live-dot"></span>${t('live')}</span>` :
+            st === 'soon' ? `<span class="badge b-soon">⏰ ${t('soon')}</span>` :
               st === 'next' ? `<span class="badge b-next">${fmt(sd)}</span>` :
-                `<span class="badge b-done">Finalizado</span>`;
+                `<span class="badge b-done">${t('done')}</span>`;
           return `<div class="mcard${st === 'live' ? ' live-card' : st === 'done' ? ' done-card' : ''}">
         <div class="mc-head">
           <div class="mc-stage">${stage}</div>
@@ -1586,16 +1652,16 @@
         <div class="mc-foot">${m.st}</div>
       </div>`;
         }).join('');
-        const dl = new Date(Date.now() + 7200000).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
-        p.innerHTML = `<div class="slabel">Partidos de Hoy · ${dl.charAt(0).toUpperCase() + dl.slice(1)}</div><div class="today-grid ${cls}">${cards}</div>`;
+        const dl = new Date(Date.now() + 7200000).toLocaleDateString(t('locale'), { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+        p.innerHTML = `<div class="slabel">${t('lblHoy')} · ${dl.charAt(0).toUpperCase() + dl.slice(1)}</div><div class="today-grid ${cls}">${cards}</div>`;
       } else {
         const next = MATCHES.find(m => toSpain(m.date, m.t, m.u).getTime() > Date.now());
         let nxt = '';
         if (next) {
-          const sd = toSpain(next.date, next.t, next.u); const dl = sd.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
-          nxt = `<div style="font-size:18px;font-weight:500;color:var(--muted);margin-top:10px">Próximo: <strong style="color:var(--teal)">${next.t1} vs ${next.t2}</strong> — ${dl} <strong style="color:var(--gold)">${fmt(sd)}</strong></div>`;
+          const sd = toSpain(next.date, next.t, next.u); const dl = sd.toLocaleDateString(t('locale'), { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+          nxt = `<div style="font-size:18px;font-weight:500;color:var(--muted);margin-top:10px">${t('next')}: <strong style="color:var(--teal)">${next.t1} vs ${next.t2}</strong> — ${dl} <strong style="color:var(--gold)">${fmt(sd)}</strong></div>`;
         }
-        p.innerHTML = `<div class="no-matches"><div class="nm-ico">⚽</div><div class="nm-txt">Sin partidos hoy</div>${nxt}</div>`;
+        p.innerHTML = `<div class="no-matches"><div class="nm-ico">⚽</div><div class="nm-txt">${t('noMatch')}</div>${nxt}</div>`;
       }
     }
 
@@ -1653,7 +1719,7 @@
         const matches = CAL_BY[day];
 
         const rows = matches.map(m => {
-          const stage = m.g ? `Gr.${m.g}` : SN[m.s];
+          const stage = m.g ? `Gr.${m.g}` : stageName(m.s);
           const st    = status(m);
           const ld    = LIVE_DATA[m.id];
           const sc    = (ld && ld.h != null) ? `<span class="cm-score-pill">${ld.h}–${ld.a}</span>` : '';
@@ -1681,9 +1747,9 @@
 
         return `<div class="cal-col${isT ? ' today-col' : ''}">
           <div class="col-head">
-            <div class="col-day">${DAYS_ES[dt.getUTCDay()]}</div>
+            <div class="col-day">${t('days')[dt.getUTCDay()]}</div>
             <div class="col-num">${dt.getUTCDate()}</div>
-            <div class="col-mon">${MONS_ES[dt.getUTCMonth()]} ${dt.getUTCFullYear()}</div>
+            <div class="col-mon">${t('months')[dt.getUTCMonth()]} ${dt.getUTCFullYear()}</div>
           </div>
           <div class="cal-matches">${rows}</div>
         </div>`;
@@ -1801,8 +1867,8 @@
       const items = MATCHES.filter(m => toSpain(m.date, m.t, m.u).getTime() > Date.now() - 7200000).slice(0, 35);
       document.getElementById('ticker').innerHTML = items.map(m => {
         const sd = toSpain(m.date, m.t, m.u), isT = dStr(sd) === td;
-        const stage = m.g ? `Grupo ${m.g}` : SN[m.s];
-        const lbl = isT ? '<strong style="color:#fff">⚡ HOY</strong>' : sd.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+        const stage = m.g ? `${t('grupo')} ${m.g}` : stageName(m.s);
+        const lbl = isT ? `<strong style="color:#fff">⚡ ${t('today')}</strong>` : sd.toLocaleDateString(t('locale'), { day: 'numeric', month: 'short', timeZone: 'UTC' });
         const f1 = FC[m.t1] ? `<img src="https://flagcdn.com/w40/${FC[m.t1]}.png" style="width:18px;height:12px;object-fit:cover;border-radius:1px;vertical-align:middle;margin:0 3px">` : FE[m.t1] || '';
         const f2 = FC[m.t2] ? `<img src="https://flagcdn.com/w40/${FC[m.t2]}.png" style="width:18px;height:12px;object-fit:cover;border-radius:1px;vertical-align:middle;margin:0 3px">` : FE[m.t2] || '';
         return `${lbl} <span style="color:#fff;font-weight:700">${fmt(sd)}</span> ${f1}${m.t1} – ${m.t2}${f2} · ${m.st} (${stage})`;
@@ -1812,6 +1878,16 @@
     /* ════════════════════════════════════════════════════════
        UTILIDADES
     ════════════════════════════════════════════════════════ */
+    function applyLang() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = t(el.dataset.i18n);
+        if (v !== undefined) el.textContent = v;
+      });
+      buildHoy();
+      buildTicker();
+      if (cur === 1) renderCalPage();
+    }
+
     function tick() { }
     function tickCd() {
       const left = Date.UTC(2026, 5, 11, 19, 0, 0) - Date.now(); if (left <= 0) return;
@@ -1879,6 +1955,11 @@
       });
 
       setInterval(() => { tick(); tickCd(); }, 1000);
+      setInterval(() => {                          /* rotar idioma cada 2s */
+        langIdx = (langIdx + 1) % LANG_CYCLE.length;
+        curLang = LANG_CYCLE[langIdx];
+        applyLang();
+      }, 2000);
       setInterval(() => { buildHoy(); updateLive(); buildTicker(); }, 60000);
       setInterval(() => {                          /* API cada 2 minutos */
         fetchScores().then(() => { buildHoy(); buildTicker(); if (cur === 1) renderCalPage(); });
