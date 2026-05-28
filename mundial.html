@@ -1769,7 +1769,7 @@
     function buildGroups() {
       document.getElementById('groups').innerHTML = Object.entries(GDATA).map(([l, teams]) => `
     <div class="gcard">
-      <div class="gcard-head"><div class="g-letter">${l}</div><div class="g-label">Grupo</div></div>
+      <div class="gcard-head"><div class="g-letter">${l}</div><div class="g-label">${t('grupo')}</div></div>
       <div class="gteams">${teams.map(t => `
         <div class="grow${t === 'España' ? ' es' : ''}">
           <div class="gflag">${grpF(t)}</div>
@@ -1878,6 +1878,7 @@
       buildHoy();
       buildTicker();
       if (cur === 1) renderCalPage();
+      if (cur === 2) buildGroups();
     }
 
     function tick() { }
