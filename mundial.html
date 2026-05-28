@@ -1199,23 +1199,28 @@
       margin-left: 4px;
     }
 
-    /* Indicador de estado API */
+    /* Indicador de estado API — solo icono sin conexión */
     .api-status {
       position: fixed;
-      top: 8px;
-      right: 8px;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 50px;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--live-bg);
+      color: var(--live);
+      border: 1.5px solid rgba(192,57,43,.2);
       z-index: 99;
       opacity: 0;
-      transition: opacity .5s;
+      pointer-events: none;
+      transition: opacity .4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .api-status.show { opacity: 1; }
-    .api-status.ok   { background: var(--green-bg); color: var(--green); }
-    .api-status.err  { background: var(--live-bg);  color: var(--live);  }
+    .api-status svg  { width: 15px; height: 15px; }
 
     /* Banner sin conexión */
     .net-banner {
@@ -1318,8 +1323,18 @@
     📡 Sin conexión — mostrando datos en caché
   </div>
 
-  <!-- Indicador estado API (aparece 4s tras cada petición) -->
-  <div id="api-status" class="api-status"></div>
+  <!-- Indicador sin conexión API (icono wifi-off) -->
+  <div id="api-status" class="api-status">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="1" y1="1" x2="23" y2="23"/>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+      <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+      <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+      <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+      <line x1="12" y1="20" x2="12.01" y2="20"/>
+    </svg>
+  </div>
 
   <!-- ══════════ TICKER ══════════ -->
   <footer class="ticker-bar">
@@ -1802,24 +1817,21 @@
         LIVE_DATA = JSON.parse(raw);
         const mins = Math.round((Date.now() - ts) / 60000);
         const age  = mins < 60 ? `${mins} min` : mins < 1440 ? `${Math.round(mins / 60)} h` : `${Math.round(mins / 1440)} días`;
-        showApiStatus(false, `📦 Datos guardados · hace ${age}`);
+        showApiStatus(true);  /* datos en caché cargados — no es error */
       } catch (e) { LIVE_DATA = {}; }
     }
 
-    function showApiStatus(ok, txt) {
-      let el = document.getElementById('api-status');
+    function showApiStatus(ok) {
+      const el = document.getElementById('api-status');
       if (!el) return;
-      el.className = 'api-status show ' + (ok ? 'ok' : 'err');
-      el.textContent = txt;
-      clearTimeout(el._t);
-      el._t = setTimeout(() => el.classList.remove('show'), 4000);
+      el.classList.toggle('show', !ok);  /* visible solo cuando hay error */
     }
 
     async function fetchScores() {
       if (!WORKER_URL || WORKER_URL.includes('REEMPLAZA')) return;
       try {
         const r = await fetch(WORKER_URL);   /* el worker añade la API key y CORS */
-        if (!r.ok) { showApiStatus(false, `API ${r.status}`); return; }
+        if (!r.ok) { showApiStatus(false); return; }
         const d = await r.json();
 
         let updated = 0;
@@ -1841,12 +1853,12 @@
 
         const fromCache = r.headers.get('X-From-Cache') === 'true';
         if (fromCache) {
-          showApiStatus(false, `📡 Sin red · ${updated} resultado${updated !== 1 ? 's' : ''} en caché`);
+          showApiStatus(false);   /* sin red, sirviendo caché */
         } else {
-          showApiStatus(true, `⚽ API OK · ${updated} resultado${updated !== 1 ? 's' : ''}`);
+          showApiStatus(true);    /* API OK */
         }
       } catch (e) {
-        showApiStatus(false, 'API sin conexión');
+        showApiStatus(false);
         console.warn('fetchScores:', e);
       }
     }
