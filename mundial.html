@@ -1695,16 +1695,14 @@
 
     function renderCalPage() {
       const td    = today();
-      const total = Math.ceil(CAL_DAYS.length / CAL_PAGE_SIZE);
-      const start = calPage * CAL_PAGE_SIZE;
+      /* Siempre muestra los próximos 4 días desde hoy */
+      const si    = CAL_DAYS.findIndex(d => d >= td);
+      const start = si < 0 ? 0 : si;
       const slice = CAL_DAYS.slice(start, start + CAL_PAGE_SIZE);
 
-      /* dots indicador de página */
+      /* Ocultar dots (no hay paginación) */
       const dotsEl = document.getElementById('cal-page-dots');
-      if (dotsEl) dotsEl.innerHTML = Array.from({ length: total }, (_, i) =>
-        `<span style="display:inline-block;width:${i === calPage ? 18 : 6}px;height:6px;border-radius:3px;` +
-        `background:${i === calPage ? 'var(--teal)' : 'var(--surface3)'};margin:0 3px;transition:width .35s"></span>`
-      ).join('');
+      if (dotsEl) dotsEl.innerHTML = '';
 
       const cols = document.getElementById('cal-cols');
       if (!cols) return;
@@ -1760,11 +1758,7 @@
 
     function startCalPaging() {
       stopCalPaging();
-      renderCalPage();
-      calTimer = setInterval(() => {
-        calPage = (calPage + 1) % Math.ceil(CAL_DAYS.length / CAL_PAGE_SIZE);
-        renderCalPage();
-      }, CAL_PAGE_MS);
+      renderCalPage(); /* sin paginación: siempre 4 días desde hoy */
     }
 
     function stopCalPaging() { clearInterval(calTimer); calTimer = null; }
@@ -1908,7 +1902,7 @@
        Tiempos: HOY 15s · CALENDARIO 28s (4 páginas×7s) · GRUPOS 15s
     ════════════════════════════════════════════════════════ */
     let cur = 0, rotT = null;
-    const ROT = [15000, 28000, 15000]; /* duración por panel */
+    const ROT = [20000, 20000, 20000]; /* duración por panel */
 
     function goPanel(idx, manual = true) {
       const prev = cur;
@@ -1953,11 +1947,11 @@
       });
 
       setInterval(() => { tick(); tickCd(); }, 1000);
-      setInterval(() => {                          /* rotar idioma cada 2s */
+      setInterval(() => {                          /* rotar idioma cada 4s */
         langIdx = (langIdx + 1) % LANG_CYCLE.length;
         curLang = LANG_CYCLE[langIdx];
         applyLang();
-      }, 2000);
+      }, 4000);
       setInterval(() => { buildHoy(); updateLive(); buildTicker(); }, 60000);
       setInterval(() => {                          /* API cada 2 minutos */
         fetchScores().then(() => { buildHoy(); buildTicker(); if (cur === 1) renderCalPage(); });
